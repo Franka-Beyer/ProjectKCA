@@ -1,0 +1,3 @@
+[submodule "Tiny-LLM-llama"]
+	path = Tiny-LLM-llama
+	url = https://huggingface.co/arnir0/Tiny-LLM
