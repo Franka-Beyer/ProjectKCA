@@ -1,4 +1,12 @@
 # An Attempt at Detecting knowldege inconsistencies in smaller models with limited compute
 ### Based on Wan et al., 2024, "Knowledge verification to nip hallucination in the bud". Excluding fine-tuning of models, thus limited to investigation of knowledge inconsistencies between alignment data and foundation models and estimation of hallucination rates.
 
-Using (slightly) modified code from https://github.com/fanqiwan/KCA and Tiny-LLM. Please clone all repositories mentioned in the Notebook.
+Using (slightly) modified code from https://github.com/fanqiwan/KCA and Tiny-LLM. Please clone all repositories mentioned in the Notebook to replicate the results included.
+
+The Notebook follows the instructions from KCA on how to use their provided scripts, which are applied to two new models: Tiny-LLM and Qwen2-1.5B (accessed with ollama). The examination questions to determine knowledge inconsistencies bewteen foundation models and alignement data included in KCA are employed, with the results included in the notebook as well as the KCAmodified directory.
+
+As Wan et al. find a correlation between such knowledge inconsistencies and hallucination rates of the resulting fine-tuned models, Tiny-LLM and Qwen2-1.5B are also automatically assessed on MS MACRO and ACI-Bench with ROUGE scores (following the paper), and a qualitative analysis on model responses to the included testsets is made possible. The files containing the original testset questions, the analysis of the knowledge requirements by GPT-4 (from Wan et al.), the reference knowledge provided by GPT-4 (also from Wan et al.), and the responses from the smaller models are included in KCAmodified/qualitative_analysis/. All this is included in the prompts KCA employs to query a well-aligned LLM (GPT-4) to rate hallucinations in the responses. The notebook allows to read any of these files in, to sample a number of questions to analyse and to roughly estimate the hallucination rates. It should thus provide some insight into the exact workings of the automatic evaluation from the original scripts.
+
+As both models included here are significantly smaller than those from Wan et al., this project could serve as a preview of how this methodology applies to small LMs, even if compute limitations made fine-tuning on the adjusted and now knowledge consistent alignment data impossible. (This data is included in KCAmodified/data/processed_results/ .)
+
+Any scripts that were modified (mostly to allow for compatibility with ollama and updated modules from openai, as well as the generation of the files for the quantitative analysis) are included in KCAmodified (among others). Any modifications made are indicated by comments in the python files. A link to Tiny-LLM is included for completeness.
